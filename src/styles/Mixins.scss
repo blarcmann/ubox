@@ -42,12 +42,12 @@
     border: 0;
     outline: none;
     transition: .3s ease-in-out;
-    margin: 5px;
     @include centerCenter;
     height: 50px;
     font-weight: $bold;
     border-radius: 0.5rem;
     position: relative;
+    cursor: pointer;
     .loader {
         opacity: 1;
         position: absolute;
