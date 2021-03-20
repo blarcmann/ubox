@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 
 import Home from './screens/home';
+import Login from './screens/auth/login';
 
 export default class Routes extends Component {
   render() {
@@ -10,6 +11,7 @@ export default class Routes extends Component {
       <Router>
         <Switch>
           <Route path="/" exact component={Home} />
+          <Route path="/login" exact component={Login} />
           <Route path="**" component={Home} />
         </Switch>
       </Router>

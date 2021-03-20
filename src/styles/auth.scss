@@ -1,0 +1,120 @@
+@import "./Variables.scss";
+@import "./Mixins.scss";
+
+.auth-container {
+  background-color: $purpleViolet;
+  // background-image: url("../../assets/svgs/AuthBackground.svg");
+  background-size: cover;
+  min-height: 100vh;
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 3rem;
+  .auth-form {
+    margin: auto;
+    width: 420px;
+    position: relative;
+    @include small-screens {
+      width: 94%;
+    }
+    &-title {
+      color: $lightgray;
+      font-weight: $bold;
+      font-size: 1.25rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    &-sub-title,
+    &-message {
+      color: $lightgray;
+      font-size: 0.9375rem;
+      text-align: center;
+      line-height: 1.75rem;
+      margin: -0.5rem 0 1.5rem;
+      background-color: rgba(0, 0, 0, 0.15);
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      .success {
+        color: #02f076;
+      }
+      p {
+        font-weight: $bold;
+        margin-bottom: 0;
+        word-break: break-all;
+        padding: 0 1rem;
+      }
+      span {
+        font-weight: $medium;
+      }
+      &.error {
+        color: rgb(255, 58, 58);
+      }
+    }
+    form {
+      .auth-form-item {
+        width: calc(100% - 2.5rem);
+        height: 45px;
+        outline: none;
+        padding: 0 1.25rem;
+        margin-bottom: 0.25rem;
+        border: none;
+        &.errorState {
+          background-color: rgba(255, 0, 0, 0.15);
+          border-radius: 0.25rem;
+          border-bottom: 0;
+        }
+      }
+      .inputs-cover {
+        border-radius: 0.5rem;
+        background-color: $white;
+        padding: 0.635rem;
+        padding-bottom: 0.125rem;
+      }
+      .no-br-bottom {
+        border-bottom: none !important;
+        input {
+          border-bottom: none;
+        }
+      }
+      .with-icon {
+        position: relative;
+        cursor: pointer;
+        border-bottom: 1px solid rgba(154, 159, 191, 0.25);
+        margin-bottom: 0.25rem;
+        img {
+          position: absolute;
+          right: 0.5rem;
+          bottom: 1rem;
+          width: 18px;
+          height: 18px;
+          opacity: 0.4;
+        }
+      }
+      .auth-form-submit {
+        height: 50px;
+        @include registerButton;
+      }
+    }
+
+    .check-terms {
+      color: $white;
+      display: flex;
+      justify-content: space-between;
+      margin: 1.25rem 0 1.5rem;
+      padding-left: 0.25rem;
+      width: 98%;
+      p,
+      a {
+        color: $white;
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+    .copyright {
+      font-size: 0.75rem;
+      text-align: center;
+      margin: 2rem 0 0;
+    }
+  }
+}
