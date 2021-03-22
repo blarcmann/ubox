@@ -8,7 +8,7 @@ import AuthSubmit from '../../components/auth/submit';
 import Logo from '../../components/auth/logo';
 import AuthMessage from '../../components/auth/message';
 
-export default function Register() {
+export default function Register(props) {
   const dispatch = useDispatch()
   const [payload, setPayload] = useState({ email: '', password: '', confirmPassword: '', name: '' });
   const [loginError, setLoginError] = useState({ status: false, msg: '' });
@@ -30,7 +30,8 @@ export default function Register() {
     if (password !== confirmPassword) {
       return setLoginError({ status: true, msg: 'Password does not match' })
     }
-    dispatch(register(payload));
+    setLoginError({ status: false, msg: '' })
+    dispatch(register(payload, props));
   }
 
   return (
