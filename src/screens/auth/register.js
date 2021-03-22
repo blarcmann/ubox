@@ -19,7 +19,7 @@ export default function Register(props) {
     setPayload(payload => ({ ...payload, [key]: value }));
   }
 
-  const submitForm = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
     const { email, password, confirmPassword, name } = payload;
     payload.avatar = `http://gravatar.com/avatar?d=identicon`;
@@ -45,7 +45,7 @@ export default function Register(props) {
           : ''
         }
         <h3 className="auth-form-title">Get started</h3>
-        <form onSubmit={submitForm}>
+        <form onSubmit={onSubmit}>
           <div className="inputs-cover">
             <InputField placeholder="Username" type="text" value={payload.email}
               onChange={e => handleChange("email", e.target.value)} />
@@ -59,7 +59,7 @@ export default function Register(props) {
             <InputField withIcon noBorderBotom placeholder="Confirm password" type="password" value={payload.confirmPassword}
               onChange={e => handleChange("confirmPassword", e.target.value)} />
           </div>
-          <AuthSubmit label="Register" handleClick={submitForm} />
+          <AuthSubmit label="Register" handleClick={onSubmit} />
         </form>
         <div className="copyright">2021 ubox. All Rights Reserved </div>
       </div>

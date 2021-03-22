@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import AuthHOC from './hoc/auth';
 
 
 import Home from './screens/home';
@@ -11,9 +12,9 @@ export default class Routes extends Component {
     return (
       <Router>
         <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/login" exact component={Login} />
-          <Route path="/register" exact component={Register} />
+          <Route path="/" exact component={AuthHOC(Home, null)} />
+          <Route path="/login" exact component={AuthHOC(Login, false)} />
+          <Route path="/register" exact component={AuthHOC(Register, false)} />
           <Route path="**" component={Home} />
         </Switch>
       </Router>

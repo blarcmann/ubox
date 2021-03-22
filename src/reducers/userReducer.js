@@ -1,7 +1,8 @@
 import { LOGIN, REGISTER, AUTH, LOGOUT } from '../constants/types';
 
 let initialState = {
-
+  user: {},
+  auth: {},
 }
 
 
@@ -12,7 +13,7 @@ export default function userReducer(state = initialState, action) {
     case LOGIN:
       return { ...state, loginSucces: action.payload }
     case AUTH:
-      return { ...state, userData: action.payload }
+      return { ...state, auth: action.payload }
     case LOGOUT:
       return { ...state }
     default:
