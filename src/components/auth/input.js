@@ -14,7 +14,7 @@ export default function InputField(props) {
 	const toggleText = () => {
 		setInputType(inputType === 'password' ? 'text' : 'password');
 	};
-	console.log(toggleText)
+	// console.log(toggleText)
 
 	const errStt = errorState ? 'auth-form-item errorState' : 'auth-form-item';
 

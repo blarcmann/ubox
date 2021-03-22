@@ -1,7 +1,11 @@
 import { LOGIN, REGISTER, AUTH, LOGOUT } from '../constants/types';
 
+let initialState = {
 
-export default function userReducer (state = {}, action) {
+}
+
+
+export default function userReducer(state = initialState, action) {
   switch (action.type) {
     case REGISTER:
       return { ...state, register: action.payload }

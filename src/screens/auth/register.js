@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-// import { signIn } from '../../redux/auth/auth.actions';
+import {useDispatch } from 'react-redux';
+import { register } from '../../actions/auth';
 
 //components
 import InputField from '../../components/auth/input';
@@ -7,26 +8,29 @@ import AuthSubmit from '../../components/auth/submit';
 import Logo from '../../components/auth/logo';
 import AuthMessage from '../../components/auth/message';
 
-export default function Login() {
+export default function Register() {
+  const dispatch = useDispatch()
   const [payload, setPayload] = useState({ email: '', password: '', confirmPassword: '', name: '' });
   const [loginError, setLoginError] = useState({ status: false, msg: '' });
 
 
-  const handleChange = (key, value) => {
-    let np = payload;
-    np[key] = value;
-    setPayload(np)
-  }
 
+  const handleChange = (key, value) => {
+    setPayload(payload => ({ ...payload, [key]: value }));
+  }
 
   const submitForm = (e) => {
     e.preventDefault();
     const { email, password, confirmPassword, name } = payload;
     payload.avatar = `http://gravatar.com/avatar?d=identicon`;
+    console.log(payload)
     if (!email || !password || !confirmPassword || !name) {
-      setLoginError({ status: true, msg: 'Please fill all the fields' })
+      return setLoginError({ status: true, msg: 'Please fill all the fields' })
     }
-    // signIn(payload);
+    if (password !== confirmPassword) {
+      return setLoginError({ status: true, msg: 'Password does not match' })
+    }
+    dispatch(register(payload));
   }
 
   return (
