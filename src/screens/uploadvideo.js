@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Select } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { createPath } from '../actions/video';
+import { createPath, uploadVideo } from '../actions/video';
 import Dropzone from 'react-dropzone';
 import * as Config from '../utils/config.json';
 import '../styles/uploadvideo.scss';
@@ -17,10 +17,12 @@ const privacy = [{ value: 0, label: 'Private' }, { value: 1, label: 'Public' }];
 const categories = [{ value: 0, label: 'Videography & Films' }, { value: 1, label: 'Auto & Vehicles' },
 { value: 2, label: 'Sports' }, { value: 3, label: 'Music' }, { value: 4, label: 'Porn' }];
 const { Option } = Select;
+const saveduser = JSON.parse(localStorage.getItem('auth'))
 
-export default function Uploadvideo() {
+export default function Uploadvideo(props) {
   const dispatch = useDispatch();
   const videopath = useSelector((state) => state.video.videopath);
+  const user = useSelector((state) => state.user.user);
   const generatedThumbnail = useSelector((state) => state.video.generatedThumbnail);
   const [payload, setPayload] = useState({ title: '', description: '', privacy: '', category: '' });
   const [file, setFile] = useState('');
@@ -41,7 +43,7 @@ export default function Uploadvideo() {
   }
 
   const handleFile = (File) => {
-    if (File) { 
+    if (File) {
       setFile(File[0]);
       const formData = new FormData();
       formData.append('file', File[0]);
@@ -52,7 +54,22 @@ export default function Uploadvideo() {
   }
 
   const onSubmit = () => {
-    console.log('submit init')
+    const { title, description, privacy, category } = payload;
+    const { thumbnailsPath, duration } = generatedThumbnail;
+    if (!title || !description || !categories || !privacy || !thumbnailsPath || !duration || !videopath.filePath) {
+      return alert('Please fill all the fields')
+    }
+    const data = {
+      writer: saveduser.userId,
+      title: title,
+      description: description,
+      privacy: privacy,
+      filePath: videopath.filePath,
+      category: category,
+      thumbnail: thumbnailsPath,
+      duration: duration,
+    }
+    dispatch(uploadVideo(data, props))
   }
 
   console.log('videopath', videopath);
@@ -99,10 +116,10 @@ export default function Uploadvideo() {
 
         <Select defaultValue={0} style={{ width: 120 }} onChange={(v) => handleSelectChange('category', v)}>
           {categories.map((el, i) => (
-            <Option key={i} value={el.value}>{el.label}</Option>
+            <Option key={i} value={el.label}>{el.label}</Option>
           ))}
         </Select>
-        <Submit label="Log in" handleClick={onSubmit} />
+        <Submit label="Upload" handleClick={onSubmit} />
       </form>
     </div>
   )

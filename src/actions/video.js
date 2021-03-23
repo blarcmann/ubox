@@ -22,7 +22,7 @@ export const createPath = (payload) => (dispatch) => {
         dispatch(Loading(false));
       } else {
         dispatch(Loading(false));
-        alert('failed to save video')
+        alert('failed to preview video')
       }
     })
     .catch((error) => {
@@ -49,6 +49,30 @@ export const generateThumbnail = (payload) => (dispatch) => {
       } else {
         dispatch(Loading(false));
         alert('failed to save video')
+      }
+    })
+    .catch((error) => {
+      dispatch(Loading(false));
+      alert('Please reload page')
+      console.log("register user", error)
+    })
+}
+
+
+export const uploadVideo = (payload, props) => (dispatch) => {
+  dispatch(Loading(true));
+
+  axios
+    .post(`${Config.base_url}/video/uploadvideo`, payload)
+    .then((response) => {
+      console.log('upload video response', response);
+      if (response.data.success) {
+        alert('Upload Success');
+        dispatch(Loading(false));
+        props.history.push('/');
+      } else {
+        dispatch(Loading(false));
+        alert('failed to upload video')
       }
     })
     .catch((error) => {

@@ -45,14 +45,6 @@
         color: rgb(255, 58, 58);
       }
     }
-    form {
-      .auth-form-submit {
-        margin-top: 1.5rem;
-        height: 50px;
-        @include registerButton;
-      }
-    }
-
     .check-terms {
       color: $white;
       display: flex;
