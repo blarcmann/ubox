@@ -4,7 +4,7 @@ import { register } from '../../actions/auth';
 
 //components
 import InputField from '../../components/auth/input';
-import AuthSubmit from '../../components/auth/submit';
+import Submit from '../../components/auth/submit';
 import Logo from '../../components/auth/logo';
 import AuthMessage from '../../components/auth/message';
 
@@ -59,7 +59,7 @@ export default function Register(props) {
             <InputField withIcon noBorderBotom placeholder="Confirm password" type="password" value={payload.confirmPassword}
               onChange={e => handleChange("confirmPassword", e.target.value)} />
           </div>
-          <AuthSubmit label="Register" handleClick={onSubmit} />
+          <Submit label="Register" handleClick={onSubmit} />
         </form>
         <div className="copyright">2021 ubox. All Rights Reserved </div>
       </div>

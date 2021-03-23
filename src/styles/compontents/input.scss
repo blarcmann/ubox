@@ -1,0 +1,45 @@
+@import '../Variables.scss';
+
+.auth-form-item {
+  width: calc(100% - 2.5rem);
+  height: 45px;
+  outline: none;
+  padding: 0 1.25rem;
+  margin-bottom: 0.25rem;
+  border: none;
+  &.errorState {
+    background-color: rgba(255, 0, 0, 0.15);
+    border-radius: 0.25rem;
+    border-bottom: 0;
+  }
+}
+.text-area .auth-form-item {
+  height: unset;
+  border-bottom: 1px solid rgba(154, 159, 191, 0.25);
+}
+.inputs-cover {
+  border-radius: 0.5rem;
+  background-color: $white;
+  padding: 0.635rem;
+  padding-bottom: 0.125rem;
+}
+.no-br-bottom {
+  border-bottom: none !important;
+  input {
+    border-bottom: none;
+  }
+}
+.with-icon {
+  position: relative;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(154, 159, 191, 0.25);
+  margin-bottom: 0.25rem;
+  img {
+    position: absolute;
+    right: 0.5rem;
+    bottom: 1rem;
+    width: 18px;
+    height: 18px;
+    opacity: 0.4;
+  }
+}

@@ -4,10 +4,10 @@ import { login } from '../../actions/auth';
 import { useDispatch } from 'react-redux';
 
 //components
-import InputField from '../../components/auth/input';
-import AuthSubmit from '../../components/auth/submit';
+import Input from '../../components/auth/input';
+import Submit from '../../components/auth/submit';
 import Logo from '../../components/auth/logo';
-import AuthMessage from '../../components/auth/message';
+import Message from '../../components/auth/message';
 
 export default function Login(props) {
   const dispatch = useDispatch()
@@ -36,24 +36,24 @@ export default function Login(props) {
       <Logo />
       <div className="auth-form">
         {loginError.status
-          ? <AuthMessage type="error">
+          ? <Message type="error">
             {loginError.msg ? loginError.msg : 'Some error Occured'}
-          </AuthMessage>
+          </Message>
           : ''
         }
         <h3 className="auth-form-title">Enter your details</h3>
         <form onSubmit={onSubmit}>
           <div className="inputs-cover">
-            <InputField placeholder="Username" type="text" value={payload.email}
+            <Input placeholder="Username" type="text" value={payload.email}
               onChange={e => handleChange("email", e.target.value)} />
 
-            <InputField withIcon noBorderBotom placeholder="Password" type="password" value={payload.password}
+            <Input withIcon noBorderBotom placeholder="Password" type="password" value={payload.password}
               onChange={e => handleChange("password", e.target.value)} />
           </div>
           {/* <div className="check-terms">
             <Link to="/reset-password-init">Forgot password?</Link>
           </div> */}
-          <AuthSubmit label="Log in" handleClick={onSubmit} />
+          <Submit label="Log in" handleClick={onSubmit} />
         </form>
         <div className="copyright">2021 ubox. All Rights Reserved </div>
       </div>
