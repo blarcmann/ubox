@@ -3,10 +3,11 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import AuthHOC from './hoc/auth';
 
 
-import Home from './screens/home';
-import Login from './screens/auth/login';
-import Register from './screens/auth/register';
+import Home from './screens/home'
+import Login from './screens/auth/login'
+import Register from './screens/auth/register'
 import UploadVideo from './screens/uploadvideo'
+import VideoDetails from './screens/videodetails'
 
 export default class Routes extends Component {
   render() {
@@ -17,6 +18,7 @@ export default class Routes extends Component {
           <Route path="/login" component={AuthHOC(Login, false)} />
           <Route path="/register" component={AuthHOC(Register, false)} />
           <Route path="/video/upload" component={AuthHOC(UploadVideo, true)} />
+          <Route path="/video/:id" component={AuthHOC(VideoDetails, null)} />
           <Route path="**" component={Home} />
         </Switch>
       </Router>

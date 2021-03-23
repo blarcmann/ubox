@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import {useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import moment from 'moment';
 import { register } from '../../actions/auth';
 
 //components
@@ -22,7 +23,7 @@ export default function Register(props) {
   const onSubmit = (e) => {
     e.preventDefault();
     const { email, password, confirmPassword, name } = payload;
-    payload.avatar = `http://gravatar.com/avatar?d=identicon`;
+    payload.avatar = `http://gravatar.com/avatar/${moment().unix()}?d=identicon`
     console.log(payload)
     if (!email || !password || !confirmPassword || !name) {
       return setLoginError({ status: true, msg: 'Please fill all the fields' })

@@ -10,7 +10,7 @@ import '../styles/uploadvideo.scss';
 import Input from '../components/auth/input';
 import Submit from '../components/auth/submit';
 import Textarea from '../components/auth/textarea'
-import Message from '../components/auth/message';
+// import Message from '../components/auth/message';
 
 
 const privacy = [{ value: 0, label: 'Private' }, { value: 1, label: 'Public' }];
@@ -22,11 +22,11 @@ const saveduser = JSON.parse(localStorage.getItem('auth'))
 export default function Uploadvideo(props) {
   const dispatch = useDispatch();
   const videopath = useSelector((state) => state.video.videopath);
-  const user = useSelector((state) => state.user.user);
+  // const user = useSelector((state) => state.user.user);
   const generatedThumbnail = useSelector((state) => state.video.generatedThumbnail);
   const [payload, setPayload] = useState({ title: '', description: '', privacy: '', category: '' });
   const [file, setFile] = useState('');
-  const [uploadError, setUploadError] = useState({ status: false, msg: '' });
+  // const [uploadError, setUploadError] = useState({ status: false, msg: '' });
 
 
   const handleChange = (key, value) => {
@@ -37,7 +37,7 @@ export default function Uploadvideo(props) {
     if (type === 'privacy') {
       setPayload(payload => ({ ...payload, privacy: value }))
     }
-    if (type == 'category') {
+    if (type === 'category') {
       setPayload(payload => ({ ...payload, category: value }))
     }
   }
@@ -78,11 +78,11 @@ export default function Uploadvideo(props) {
   return (
     <div className="upload-video">
       <div className="title">Upload Video</div>
-      {uploadError.status
+      {/* {uploadError.status
         ? <Message>
           {uploadError.msg ? uploadError.msg : 'Some error Occured'}
         </Message>
-        : ''}
+        : ''} */}
 
       <form>
         <Dropzone
