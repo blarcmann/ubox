@@ -120,3 +120,91 @@ export const fetchVideoDetails = (payload) => (dispatch) => {
       console.log("failed to load video", error)
     })
 }
+
+export const getSubscribers = (payload) => (dispatch) => {
+  dispatch(Loading(true));
+
+  axios
+    .post(`${Config.base_url}/sub/subNumber`, payload)
+    .then((response) => {
+      const { subscribers } = response.data;
+      if (response.data.success) {
+        dispatch({ type: Types.GET_SUBSCRIBERS, payload: subscribers });
+        dispatch(updateSubscription(payload))
+        dispatch(Loading(false));
+      } else {
+        dispatch(Loading(false));
+        alert('failed to load all sub')
+      }
+    })
+    .catch((error) => {
+      dispatch(Loading(false));
+      alert('Please reload page')
+      console.log("failed to load all videos", error)
+    })
+}
+
+export const updateSubscription = (payload) => (dispatch) => {
+  dispatch(Loading(true));
+
+  axios
+    .post(`${Config.base_url}/sub/subscribed`, payload)
+    .then((response) => {
+      const { subscribed } = response.data;
+      if (response.data.success) {
+        dispatch({ type: Types.ACCOUNT_SUBSCRIPTION, payload: subscribed });
+        dispatch(Loading(false));
+      } else {
+        dispatch(Loading(false));
+        alert('failed to load all sub')
+      }
+    })
+    .catch((error) => {
+      dispatch(Loading(false));
+      alert('Please reload page')
+      console.log("failed to subscribe", error)
+    })
+}
+
+export const subscribe = (payload) => (dispatch) => {
+  dispatch(Loading(true));
+
+  axios
+    .post(`${Config.base_url}/sub/subscribe`, payload)
+    .then((response) => {
+      console.log('subscribe response', response);
+      if (response.data.success) {
+        dispatch({ type: Types.SUBSCRIBED, payload: response.data });
+        dispatch(Loading(false));
+      } else {
+        dispatch(Loading(false));
+        alert('failed to subscribe')
+      }
+    })
+    .catch((error) => {
+      dispatch(Loading(false));
+      alert('Please reload page')
+      console.log("failed to subscribe", error)
+    })
+}
+
+export const unsubscribe = (payload) => (dispatch) => {
+  dispatch(Loading(true));
+
+  axios
+    .post(`${Config.base_url}/sub/unsubscribe`, payload)
+    .then((response) => {
+      if (response.data.success) {
+        dispatch({ type: Types.UNSUBSCRIBED, payload: response.data });
+        dispatch(Loading(false));
+      } else {
+        dispatch(Loading(false));
+        alert('failed to unsubscribe')
+      }
+    })
+    .catch((error) => {
+      dispatch(Loading(false));
+      alert('Please reload page')
+      console.log("unsubscribe error", error)
+    })
+}

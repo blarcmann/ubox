@@ -5,6 +5,8 @@ let initialState = {
   generatedThumbnail: {},
   all: [],
   videoDetails: {},
+  subscribers: 0,
+  subscribed: false,
 }
 
 
@@ -29,6 +31,28 @@ export default function videoReducer(state = initialState, action) {
       return {
         ...state,
         videoDetails: action.payload
+      }
+    case Types.GET_SUBSCRIBERS:
+      return {
+        ...state,
+        subscribers: action.payload
+      }
+    case Types.ACCOUNT_SUBSCRIPTION:
+      return {
+        ...state,
+        subscribed: action.payload
+      }
+    case Types.SUBSCRIBED:
+      return {
+        ...state,
+        subscribers: state.subscribers += 1,
+        subscribed: !state.subscribed
+      }
+    case Types.UNSUBSCRIBED:
+      return {
+        ...state,
+        subscribers: state.subscribers -= 1,
+        subscribed: !state.subscribed
       }
     default:
       return state;

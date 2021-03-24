@@ -14,7 +14,6 @@ export default function Home() {
   }, []);
 
   const videos = useSelector(state => state.video.all)
-  console.log(videos)
 
   const renderVideos = () => {
     return videos.map((video, i) => (
