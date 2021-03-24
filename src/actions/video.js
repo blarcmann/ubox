@@ -208,3 +208,26 @@ export const unsubscribe = (payload) => (dispatch) => {
       console.log("unsubscribe error", error)
     })
 }
+
+export const getSubscriptionVideos = (payload) => (dispatch) => {
+  dispatch(Loading(true));
+
+  axios
+    .post(`${Config.base_url}/video/getSubVideos`, payload)
+    .then((response) => {
+      console.log('getSubVideos', response)
+      const { videos } = response.data;
+      if (response.data.success) {
+        dispatch({ type: Types.FETCH_SUB_VIDEOS, payload: videos });
+        dispatch(Loading(false));
+      } else {
+        dispatch(Loading(false));
+        alert('failed to load all videos')
+      }
+    })
+    .catch((error) => {
+      dispatch(Loading(false));
+      alert('Please reload page')
+      console.log("failed to load all videos", error)
+    })
+}

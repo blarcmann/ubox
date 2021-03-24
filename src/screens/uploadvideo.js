@@ -15,7 +15,9 @@ import Textarea from '../components/auth/textarea'
 
 const privacy = [{ value: 0, label: 'Private' }, { value: 1, label: 'Public' }];
 const categories = [{ value: 0, label: 'Videography & Films' }, { value: 1, label: 'Auto & Vehicles' },
-{ value: 2, label: 'Sports' }, { value: 3, label: 'Music' }, { value: 4, label: 'Porn' }];
+  { value: 2, label: 'Sports' }, { value: 3, label: 'Music' }, { value: 4, label: 'Porn' }];
+
+  
 const { Option } = Select;
 const saveduser = JSON.parse(localStorage.getItem('auth'))
 

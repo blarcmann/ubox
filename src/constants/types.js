@@ -13,3 +13,4 @@ export const GET_SUBSCRIBERS = 'get_subscribers_number';
 export const ACCOUNT_SUBSCRIPTION = 'subscribe_and_unsubscribe_from_account';
 export const UNSUBSCRIBED = 'unsubscribed'
 export const SUBSCRIBED = 'subscribed'
+export const FETCH_SUB_VIDEOS = 'fetch_subscribed_videos';
