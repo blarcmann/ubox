@@ -231,3 +231,48 @@ export const getSubscriptionVideos = (payload) => (dispatch) => {
       console.log("failed to load all videos", error)
     })
 }
+
+// COMMENTS
+export const addComment = (payload) => (dispatch) => {
+  dispatch(Loading(true));
+
+  axios
+    .post(`${Config.base_url}/comment/addcomment`, payload)
+    .then((response) => {
+      if (response.data.success) {
+        alert('success');
+        dispatch(fetchComments(payload))
+        dispatch(Loading(false));
+      } else {
+        dispatch(Loading(false));
+        alert('failed to add comment')
+      }
+    })
+    .catch((error) => {
+      dispatch(Loading(false));
+      alert('Please reload page')
+      console.log("failed to add comment", error)
+    })
+}
+
+export const fetchComments = (payload) => (dispatch) => {
+  dispatch(Loading(true));
+
+  axios
+    .post(`${Config.base_url}/comment/allcomments`, payload)
+    .then((response) => {
+      const { comments } = response.data;
+      if (response.data.success) {
+        dispatch({ type: Types.FETCH_COMMENTS, payload: comments });
+        dispatch(Loading(false));
+      } else {
+        dispatch(Loading(false));
+        alert('failed to load all comments')
+      }
+    })
+    .catch((error) => {
+      dispatch(Loading(false));
+      alert('Please reload page')
+      console.log("failed to load all comments", error)
+    })
+}

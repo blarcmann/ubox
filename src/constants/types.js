@@ -14,3 +14,5 @@ export const ACCOUNT_SUBSCRIPTION = 'subscribe_and_unsubscribe_from_account';
 export const UNSUBSCRIBED = 'unsubscribed'
 export const SUBSCRIBED = 'subscribed'
 export const FETCH_SUB_VIDEOS = 'fetch_subscribed_videos';
+export const FETCH_COMMENTS = 'fetch_comments_for_single_video';
+export const ADD_COMMENT = 'add_Comment_Single_video';

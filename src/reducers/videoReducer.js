@@ -8,6 +8,7 @@ let initialState = {
   subscribers: 0,
   subscribed: false,
   subVideos: [],
+  comments: [],
 }
 
 
@@ -59,6 +60,11 @@ export default function videoReducer(state = initialState, action) {
       return {
         ...state,
         subVideos: action.payload
+      }
+    case Types.FETCH_COMMENTS:
+      return {
+        ...state,
+        comments: action.payload
       }
     default:
       return state;

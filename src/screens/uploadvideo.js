@@ -107,7 +107,7 @@ export default function Uploadvideo(props) {
         <Input withIcon placeholder="Title" type="text" value={payload.title}
           onChange={e => handleChange("title", e.target.value)} />
 
-        <Textarea withIcon placeholder="Description" rows="10" value={payload.description}
+        <Textarea placeholder="Description" rows="10" value={payload.description}
           onChange={e => handleChange("description", e.target.value)} />
 
         <Select defaultValue={0} style={{ width: 120 }} onChange={(v) => handleSelectChange('privacy', v)}>

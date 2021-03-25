@@ -5,8 +5,9 @@ import { fetchVideoDetails, fetchAllVidoes } from '../actions/video';
 import '../styles/details.scss';
 
 // components
-import MiniCard from '../components/video/minicard.js'
-import Subscribe from '../components/video/subscribe.js'
+import MiniCard from '../components/video/minicard'
+import Subscribe from '../components/video/subscribe'
+import Comments from '../components/video/comments'
 
 export default function Videodetails(props) {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ export default function Videodetails(props) {
   const videos = useSelector(state => state.video.all)
 
   return (
+    <>
     <div className="video-details">
       <div className="stream">
         <video controls src={`${Config.base}/${video.filePath}`} className="video"></video>
@@ -42,6 +44,8 @@ export default function Videodetails(props) {
       <div className="recommended">
         {videos.map((video, i) => <MiniCard key={i} video={video} />)}
       </div>
-    </div>
+      </div>
+      <Comments videoId={video._id} />
+      </>
   )
 }
