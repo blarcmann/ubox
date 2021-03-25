@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import moment from 'moment';
 import * as Config from '../../utils/config.json';
 import '../../styles/compontents/video/card.scss';
 

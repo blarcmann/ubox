@@ -7,10 +7,12 @@ export default function Subscribe(props) {
   const dispatch = useDispatch();
   const { userTo } = props;
   const user = JSON.parse(localStorage.getItem('auth'))
-  const payload = { userTo: userTo, userFrom: user.userId };
+  const payload = { userTo: userTo, userFrom: user && user.userId };
 
   useEffect(() => {
-    dispatch(getSubscribers(payload))
+    if (user && user.id) {
+      dispatch(getSubscribers(payload))
+    }
   })
 
   const subscribers = useSelector(state => state.video.subscribers)

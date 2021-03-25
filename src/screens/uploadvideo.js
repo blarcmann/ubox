@@ -15,11 +15,11 @@ import Textarea from '../components/auth/textarea'
 
 const privacy = [{ value: 0, label: 'Private' }, { value: 1, label: 'Public' }];
 const categories = [{ value: 0, label: 'Videography & Films' }, { value: 1, label: 'Auto & Vehicles' },
-  { value: 2, label: 'Sports' }, { value: 3, label: 'Music' }, { value: 4, label: 'Porn' }];
+{ value: 2, label: 'Sports' }, { value: 3, label: 'Music' }, { value: 4, label: 'Porn' }];
 
-  
+
 const { Option } = Select;
-const saveduser = JSON.parse(localStorage.getItem('auth'))
+const user = JSON.parse(localStorage.getItem('auth'))
 
 export default function Uploadvideo(props) {
   const dispatch = useDispatch();
@@ -56,22 +56,26 @@ export default function Uploadvideo(props) {
   }
 
   const onSubmit = () => {
-    const { title, description, privacy, category } = payload;
-    const { thumbnailsPath, duration } = generatedThumbnail;
-    if (!title || !description || !categories || !privacy || !thumbnailsPath || !duration || !videopath.filePath) {
-      return alert('Please fill all the fields')
+    if (user && user.id) {
+      const { title, description, privacy, category } = payload;
+      const { thumbnailsPath, duration } = generatedThumbnail;
+      if (!title || !description || !categories || !privacy || !thumbnailsPath || !duration || !videopath.filePath) {
+        return alert('Please fill all the fields')
+      }
+      const data = {
+        writer: user.userId,
+        title: title,
+        description: description,
+        privacy: privacy,
+        filePath: videopath.filePath,
+        category: category,
+        thumbnail: thumbnailsPath,
+        duration: duration,
+      }
+      dispatch(uploadVideo(data, props))
+    } else {
+      alert('login to continue')
     }
-    const data = {
-      writer: saveduser.userId,
-      title: title,
-      description: description,
-      privacy: privacy,
-      filePath: videopath.filePath,
-      category: category,
-      thumbnail: thumbnailsPath,
-      duration: duration,
-    }
-    dispatch(uploadVideo(data, props))
   }
 
   console.log('videopath', videopath);

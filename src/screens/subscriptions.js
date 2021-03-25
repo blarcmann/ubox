@@ -9,13 +9,16 @@ import Card from '../components/video/card'
 
 export default function Subscriptions() {
   const dispatch = useDispatch();
-  const saveduser = JSON.parse(localStorage.getItem('auth'));
+  const user = JSON.parse(localStorage.getItem('auth'));
   const payload = {
-    userFrom: saveduser.userId
+    userFrom: user && user.userId
   }
 
   useEffect(() => {
-    dispatch(getSubscriptionVideos(payload))
+    if (user && user.id) {
+      dispatch(getSubscriptionVideos(payload))
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const subVideos = useSelector(state => state.video.subVideos)

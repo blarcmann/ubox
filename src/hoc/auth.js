@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 const userAuth = JSON.parse(localStorage.getItem('auth'));
 
-export default function (SpecificComponent, option, adminRoute = null) {
+export default function AuthHOC (SpecificComponent, option, adminRoute = null) {
   function AuthenticationCheck(props) {
 
     let user = useSelector(state => state.user);

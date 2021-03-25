@@ -11,7 +11,7 @@ export default function LikeDislike(props) {
   const dispatch = useDispatch();
 
   let payload = {
-    userId: user.userId
+    userId: user && user.userId
   }
 
   if (props.video) {
@@ -23,26 +23,27 @@ export default function LikeDislike(props) {
   useEffect(() => {
     dispatch(getLikes(payload))
     dispatch(getDislikes(payload))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const likes = useSelector(store => store.video.likes)
   const dislikes = useSelector(store => store.video.dislikes)
 
-  const checkLiked = () => {
-    likes.map(like => {
-      if (like.userId === user.userId) {
-        setLikeAction('liked')
-      }
-    })
-  }
+  // const checkLiked = () => {
+  //   likes.map(like => {
+  //     if (like.userId === user.userId) {
+  //       setLikeAction('liked')
+  //     }
+  //   })
+  // }
 
-  const checkDisliked = () => {
-    likes.map(like => {
-      if (like.userId === user.userId) {
-        setDislikeAction('disliked')
-      }
-    })
-  }
+  // const checkDisliked = () => {
+  //   likes.map(like => {
+  //     if (like.userId === user.userId) {
+  //       setDislikeAction('disliked')
+  //     }
+  //   })
+  // }
 
   const onLike = () => {
     if (likeAction === null) {

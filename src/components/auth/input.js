@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../../styles/compontents/input.scss'
 
 export default function InputField(props) {
-	const [inputType, setInputType] = useState('password');
+	const [inputType] = useState('password');
 	const {
 		value,
 		type,
@@ -12,9 +12,9 @@ export default function InputField(props) {
 		placeholder
 	} = props;
 
-	const toggleText = () => {
-		setInputType(inputType === 'password' ? 'text' : 'password');
-	};
+	// const toggleText = () => {
+	// 	setInputType(inputType === 'password' ? 'text' : 'password');
+	// };
 	// console.log(toggleText)
 
 	const errStt = errorState ? 'auth-form-item errorState' : 'auth-form-item';

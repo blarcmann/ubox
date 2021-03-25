@@ -18,6 +18,7 @@ export default function Videodetails(props) {
   useEffect(() => {
     dispatch(fetchVideoDetails(payload))
     dispatch(fetchAllVidoes());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const video = useSelector(state => state.video.videoDetails);

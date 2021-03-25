@@ -309,7 +309,7 @@ export const getDislikes = (payload) => (dispatch) => {
     .then((response) => {
       const { dislikes } = response.data;
       if (response.data.success) {
-        dispatch({ type: Types.GET_LIKES, payload: dislikes });
+        dispatch({ type: Types.GET_DISLIKES, payload: dislikes });
         dispatch(Loading(false));
       } else {
         dispatch(Loading(false));
@@ -329,7 +329,6 @@ export const upLike = (payload) => (dispatch) => {
   axios
     .post(`${Config.base_url}/like/uplike`, payload)
     .then((response) => {
-      const { likes } = response.data;
       if (response.data.success) {
         dispatch(getDislikes(payload))
         dispatch(getLikes(payload))
@@ -352,7 +351,6 @@ export const downLike = (payload) => (dispatch) => {
   axios
     .post(`${Config.base_url}/like/downlike`, payload)
     .then((response) => {
-      const { likes } = response.data;
       if (response.data.success) {
         dispatch(getDislikes(payload))
         dispatch(getLikes(payload))
@@ -375,7 +373,6 @@ export const initDislike = (payload) => (dispatch) => {
   axios
     .post(`${Config.base_url}/like/initDislike`, payload)
     .then((response) => {
-      const { likes } = response.data;
       if (response.data.success) {
         dispatch(getDislikes(payload))
         dispatch(getLikes(payload))
@@ -398,7 +395,6 @@ export const upDislike = (payload) => (dispatch) => {
   axios
     .post(`${Config.base_url}/like/upDislike`, payload)
     .then((response) => {
-      const { dislikes } = response.data;
       if (response.data.success) {
         dispatch(getDislikes(payload))
         dispatch(getLikes(payload))

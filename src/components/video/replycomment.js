@@ -14,11 +14,12 @@ export default function ReplyComment(props) {
     let val = 0;
     comments.map(c => {
       if (c.responseTo === parentCommentId) {
-        val += 1;
+        return val += 1;
       }
       setSubReplies(val)
     })
-  })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div className="comment-reply">

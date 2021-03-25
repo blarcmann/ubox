@@ -19,18 +19,23 @@ export default function Comments(props) {
       postId: videoId
     }
     dispatch(fetchComments(payload))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [videoId])
 
   const comments = useSelector(store => store.video.comments);
 
   const onsubmit = () => {
-    const payload = {
-      content: comment,
-      writer: user.userId,
-      postId: videoId,
+    if (user && user.id) {
+      const payload = {
+        content: comment,
+        writer: user.userId,
+        postId: videoId,
+      }
+      dispatch(addComment(payload))
+      setComment('');
+    } else {
+      alert('login to add comment')
     }
-    dispatch(addComment(payload))
-    setComment('');
   }
 
 
@@ -48,7 +53,7 @@ export default function Comments(props) {
         ))}
       </div>
       <form>
-        <Textarea rows="5" placeholder="Write some comments" rows="10" value={comment}
+        <Textarea placeholder="Write some comments" rows="10" value={comment}
           onChange={e => setComment(e.target.value)} />
         <Submit handleClick={onsubmit} label="submit" />
       </form>
