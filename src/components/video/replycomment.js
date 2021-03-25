@@ -12,11 +12,17 @@ export default function ReplyComment(props) {
 
   useEffect(() => {
     let val = 0;
+    // for (let i = 0; i < comments.length; i++) {
+    //   if (comments[i].responseTo === parentCommentId) {
+    //     val += 1;
+    //   }
+    //   setSubReplies(val)
+    // }
     comments.map(c => {
       if (c.responseTo === parentCommentId) {
         return val += 1;
       }
-      setSubReplies(val)
+      return setSubReplies(val)
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
