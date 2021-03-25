@@ -16,3 +16,5 @@ export const SUBSCRIBED = 'subscribed'
 export const FETCH_SUB_VIDEOS = 'fetch_subscribed_videos';
 export const FETCH_COMMENTS = 'fetch_comments_for_single_video';
 export const ADD_COMMENT = 'add_Comment_Single_video';
+export const GET_LIKES = 'get_video_likes';
+export const GET_DISLIKES = 'get_video_dislikes';

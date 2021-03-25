@@ -9,7 +9,7 @@ export default function Minicard(props) {
   const minutes = Math.floor(video.duration / 60);
   const seconds = Math.floor(video.duration - (minutes * 60))
   return (
-    <Link to={`video/${video._id}`} className="minicard">
+    <Link to={`/video/${video._id}`} className="minicard">
       <div className="thumbnail">
         <img src={`${Config.base}/${video.thumbnail}`} alt={video.title} className="thumbnail" />
       </div>

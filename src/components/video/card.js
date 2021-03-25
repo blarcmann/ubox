@@ -12,7 +12,7 @@ export default function Card(props) {
   const minutes = Math.floor(data.duration / 60);
   const seconds = Math.floor(data.duration - (minutes * 60))
   return (
-    <Link to={`video/${data._id}`} className="video-card">
+    <Link to={`/video/${data._id}`} className="video-card">
       <div className="main">
         <img src={`${Config.base}/${data.thumbnail}`} alt={data.title} className="thumbnail" />
         <span className="duration">{minutes}:{seconds}</span>

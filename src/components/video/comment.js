@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { addComment } from '../../actions/video'
 
 import Textarea from '../auth/textarea'
+import LikeDislike from './likeDislike'
 
 export default function Comment(props) {
   const dispatch = useDispatch();
@@ -33,6 +34,8 @@ export default function Comment(props) {
         <div className="content">
           <h6>{comment.writer.name}</h6>
           <p>{comment.content}</p>
+
+          <LikeDislike comment commentId={comment._id} />
           <div className="meta">
             {allowReplies && <button onClick={() => setShowingform(!showingform)} className="reply-to">Reply to</button>}
           </div>

@@ -8,6 +8,7 @@ import '../styles/details.scss';
 import MiniCard from '../components/video/minicard'
 import Subscribe from '../components/video/subscribe'
 import Comments from '../components/video/comments'
+import LikeDislike from '../components/video/likeDislike'
 
 export default function Videodetails(props) {
   const dispatch = useDispatch();
@@ -24,28 +25,29 @@ export default function Videodetails(props) {
 
   return (
     <>
-    <div className="video-details">
-      <div className="stream">
-        <video controls src={`${Config.base}/${video.filePath}`} className="video"></video>
-        <div className="video-meta">
-          <div className="meta">
-            {video.writer && video.writer.avatar
-              ? <img src={video.writer.avatar} alt="avatar" className="avatar" />
-              : <img src={require('../assets/images/avatar.png').default} alt="avatar" className="avatar" />
-            }
-            <h1>{video.title}</h1>
-            <p className="description">{video.description}.</p>
-          </div>
-          <div className="actions">
-            <Subscribe userTo={video.writer && video.writer._id}/>
+      <div className="video-details">
+        <div className="stream">
+          <video controls src={`${Config.base}/${video.filePath}`} className="video"></video>
+          <div className="video-meta">
+            <div className="meta">
+              {video.writer && video.writer.avatar
+                ? <img src={video.writer.avatar} alt="avatar" className="avatar" />
+                : <img src={require('../assets/images/avatar.png').default} alt="avatar" className="avatar" />
+              }
+              <h1>{video.title}</h1>
+              <p className="description">{video.description}.</p>
+            </div>
+            <div className="actions">
+              <LikeDislike video videoId={video._id} />
+              <Subscribe userTo={video.writer && video.writer._id} />
+            </div>
           </div>
         </div>
-      </div>
-      <div className="recommended">
-        {videos.map((video, i) => <MiniCard key={i} video={video} />)}
-      </div>
+        <div className="recommended">
+          {videos.map((video, i) => <MiniCard key={i} video={video} />)}
+        </div>
       </div>
       <Comments videoId={video._id} />
-      </>
+    </>
   )
 }
