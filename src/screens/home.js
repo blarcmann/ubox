@@ -24,7 +24,7 @@ export default function Home() {
 
   return (
     <div className="home-container">
-      <h1>Recommended Videos</h1>
+      {/* <h1>Recommended Videos</h1> */}
       <div className="videos-container">
         {renderVideos()}
       </div>
