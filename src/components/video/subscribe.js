@@ -10,7 +10,7 @@ export default function Subscribe(props) {
   const payload = { userTo: userTo, userFrom: user && user.userId };
 
   useEffect(() => {
-    if (user && user.id) {
+    if (user && user.userId) {
       dispatch(getSubscribers(payload))
     }
   })

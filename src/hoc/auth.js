@@ -1,13 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
-import { useSelector } from "react-redux";
 
 const userAuth = JSON.parse(localStorage.getItem('auth'));
 
 export default function AuthHOC (SpecificComponent, option, adminRoute = null) {
   function AuthenticationCheck(props) {
 
-    let user = useSelector(state => state.user);
+    // let user = useSelector(state => state.user);
 
     useEffect(() => {
       if (!userAuth || !userAuth.token) {
@@ -30,7 +29,7 @@ export default function AuthHOC (SpecificComponent, option, adminRoute = null) {
     })
 
     return (
-      <SpecificComponent {...props} user={user} />
+      <SpecificComponent {...props} user={userAuth} />
     )
   }
   return AuthenticationCheck

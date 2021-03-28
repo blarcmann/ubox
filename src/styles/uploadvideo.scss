@@ -1,20 +1,60 @@
 @import "./Variables.scss";
 
 .upload-video {
-  .upload-file {
-    width: 100%;
-    margin: 1.5rem 0;
-    max-width: 400px;
-    height: 240px;
-    border-radius: 0.25rem;
-    border: 1px dashed #eee;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: #f9f9f9;
+  padding: 1rem;
+  @media (min-width: 768px) {
     padding: 1.5rem;
-    background-color: #fafafa;
-    color: $graylite;
-    outline: none;
-    transition: border 0.24s ease-in-out;
+  }
+  .title {
+    text-align: center;
+    margin: 1.5rem auto;
+    font-size: 1.25rem;
+  }
+  form {
+    width: 100%;
+    padding-bottom: 3rem;
+    @media (min-width: 768px) {
+      width: 45%;
+      margin: auto;
+    }
+    @media (min-width: 1200px) {
+      width: 33%;
+    }
+    .upload-file {
+      width: 100%;
+      margin: 1.5rem 0;
+      height: 240px;
+      border-radius: 0.25rem;
+      border: 1px dashed #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      background-color: #fff;
+      outline: none;
+      cursor: pointer;
+    }
+    .file-name {
+      color: $dark;
+      font-size: $medium;
+    }
+    .g-thumbnail {
+      width: 100%;
+      object-fit: cover;
+      max-height: 240px;
+      margin-bottom: 1.5rem;
+      transition: 0.5s;
+    }
+    .ant-select {
+      width: 100%;
+      margin-bottom: 1.5rem;
+      &-selector {
+        padding: 0.5rem !important;
+        height: 45px !important;
+        border: 1px solid $lightgray !important;
+        color: $gray !important;
+      }
+    }
   }
 }

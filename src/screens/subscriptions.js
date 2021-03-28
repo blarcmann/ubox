@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getSubscriptionVideos } from '../actions/video';
-import '../styles/subscriptions.scss';
+import '../styles/home.scss';
 
 // components
 import Card from '../components/video/card'
+import WithNav from '../hoc/withNav';
 
 
 export default function Subscriptions() {
@@ -15,7 +16,7 @@ export default function Subscriptions() {
   }
 
   useEffect(() => {
-    if (user && user.id) {
+    if (user && user.userId) {
       dispatch(getSubscriptionVideos(payload))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -31,11 +32,13 @@ export default function Subscriptions() {
 
 
   return (
-    <div className="subscriptions">
-      <h1>Subscribed </h1>
-      <div className="videos-container">
-        {renderVideos()}
+    <WithNav>
+      <div className="subscriptions">
+        <h2 className="title">My subscriptions</h2>
+        <div className="videos-container">
+          {renderVideos()}
+        </div>
       </div>
-    </div>
+    </WithNav>
   )
 }

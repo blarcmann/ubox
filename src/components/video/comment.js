@@ -13,7 +13,7 @@ export default function Comment(props) {
   const user = JSON.parse(localStorage.getItem('auth'));
 
   const onReply = () => {
-    if (user && user.id) {
+    if (user && user.userId) {
       const payload = {
         writer: user.userId,
         postId: props.postId,

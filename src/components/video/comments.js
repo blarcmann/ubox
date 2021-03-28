@@ -25,7 +25,7 @@ export default function Comments(props) {
   const comments = useSelector(store => store.video.comments);
 
   const onsubmit = () => {
-    if (user && user.id) {
+    if (user && user.userId) {
       const payload = {
         content: comment,
         writer: user.userId,

@@ -26,7 +26,6 @@ export default function Home() {
   return (
     <WithNav>
       <div className="home-container">
-        {/* <h1>Recommended Videos</h1> */}
         <div className="videos-container">
           {renderVideos()}
         </div>

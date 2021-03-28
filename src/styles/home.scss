@@ -1,11 +1,15 @@
-.home-container {
+.home-container, .subscriptions {
   min-height: 100vh;
   background-color: #f9f9f9;
   @media (min-width: 600px) {
     padding: 1.5rem;
   }
-  .videos-container {
-    display: flex;
-    flex-wrap: wrap;
+  .title {
+    font-size: 1rem;
+    margin-bottom: 1rem;
   }
+}
+.videos-container {
+  display: flex;
+  flex-wrap: wrap;
 }

@@ -33,7 +33,7 @@ export default function Videodetails(props) {
             <div className="meta">
               {video.writer && video.writer.avatar
                 ? <img src={video.writer.avatar} alt="avatar" className="avatar" />
-                : <img src={require('../assets/images/avatar.png').default} alt="avatar" className="avatar" />
+                : <img src={require('../assets/images/misc/avatar.png').default} alt="avatar" className="avatar" />
               }
               <h1>{video.title}</h1>
               <p className="description">{video.description}.</p>

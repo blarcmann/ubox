@@ -1,12 +1,18 @@
-@import '../Variables.scss';
+@import "../Variables.scss";
 
 .auth-form-item {
-  width: calc(100% - 2.5rem);
+  width: 100%;
   height: 45px;
   outline: none;
-  padding: 0 1.25rem;
-  margin-bottom: 0.25rem;
+  padding: 1rem;
   border: none;
+  border: 1.5px solid $lightgray;
+  margin-bottom: 1.5rem;
+  border-radius: 0.25rem;
+  transition: 0.5s;
+  &:focus {
+    border: 1.5px solid $purpleViolet;
+  }
   &.errorState {
     background-color: rgba(255, 0, 0, 0.15);
     border-radius: 0.25rem;
@@ -15,31 +21,4 @@
 }
 .text-area .auth-form-item {
   height: unset;
-  border-bottom: 1px solid rgba(154, 159, 191, 0.25);
-}
-.inputs-cover {
-  border-radius: 0.5rem;
-  background-color: $white;
-  padding: 0.635rem;
-  padding-bottom: 0.125rem;
-}
-.no-br-bottom {
-  border-bottom: none !important;
-  input {
-    border-bottom: none;
-  }
-}
-.with-icon {
-  position: relative;
-  cursor: pointer;
-  border-bottom: 1px solid rgba(154, 159, 191, 0.25);
-  margin-bottom: 0.25rem;
-  img {
-    position: absolute;
-    right: 0.5rem;
-    bottom: 1rem;
-    width: 18px;
-    height: 18px;
-    opacity: 0.4;
-  }
 }

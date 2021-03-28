@@ -1,7 +1,16 @@
-@import '../Mixins.scss';
+@import '../Variables.scss';
 
 .auth-form-submit {
+  border: none;
   margin-top: 1.5rem;
   height: 50px;
-  @include registerButton;
+  width: 100%;
+  border-radius: 0.25rem;
+  background-color: $purpleViolet;
+  color: #FFF;
+  transition: 0.3s;
+  cursor: pointer;
+  &:hover {
+    background-color: lighten($purpleViolet, 10);
+  }
 }

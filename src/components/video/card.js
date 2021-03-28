@@ -19,7 +19,7 @@ export default function Card(props) {
       <div className="metadata">
         {data.writer && data.writer.image
           ? <img src={`${Config.base}/${data.writer.image}`} alt="avatar" className="avatar" />
-          : <img src={require('../../assets/images/avatar.png').default} alt="avatar" className="avatar" />
+          : <img src={require('../../assets/images/misc/avatar.png').default} alt="avatar" className="avatar" />
         }
         <div className="meta">
           <h3 className="title">{data.title}</h3>
