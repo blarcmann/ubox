@@ -1,6 +1,9 @@
 .home-container {
   min-height: 100vh;
   background-color: #f9f9f9;
+  @media (min-width: 600px) {
+    padding: 1.5rem;
+  }
   .videos-container {
     display: flex;
     flex-wrap: wrap;

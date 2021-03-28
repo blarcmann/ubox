@@ -5,6 +5,7 @@ import '../styles/home.scss';
 
 // components
 import Card from '../components/video/card'
+import WithNav from '../hoc/withNav';
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -23,11 +24,13 @@ export default function Home() {
   }
 
   return (
-    <div className="home-container">
-      {/* <h1>Recommended Videos</h1> */}
-      <div className="videos-container">
-        {renderVideos()}
+    <WithNav>
+      <div className="home-container">
+        {/* <h1>Recommended Videos</h1> */}
+        <div className="videos-container">
+          {renderVideos()}
+        </div>
       </div>
-    </div>
+    </WithNav>
   )
 }
