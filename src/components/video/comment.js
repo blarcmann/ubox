@@ -49,7 +49,8 @@ export default function Comment(props) {
         <form onSubmit={onReply}>
           <Textarea placeholder="Reply comment" rows="4" value={reply}
             onChange={e => setReply(e.target.value)} />
-          <button type="button" onClick={onReply}>Reply</button>
+        <button type="button" onClick={onReply}>Reply</button>
+        <button type="button">Cancel</button>
         </form>
       }
     </>

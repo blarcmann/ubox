@@ -32,8 +32,8 @@ export const login = (payload, props) => (dispatch) => {
       const { data } = response;
       localStorage.setItem('auth', JSON.stringify(data))
       dispatch({ type: types.LOGIN, payload: data });
-      // dispatch(auth());
       dispatch(Loading(false));
+      window.location.reload()
       props.history.push('/');
     })
     .catch((error) => {

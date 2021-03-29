@@ -12,12 +12,6 @@ export default function ReplyComment(props) {
 
   useEffect(() => {
     let val = 0;
-    // for (let i = 0; i < comments.length; i++) {
-    //   if (comments[i].responseTo === parentCommentId) {
-    //     val += 1;
-    //   }
-    //   setSubReplies(val)
-    // }
     comments.map(c => {
       if (c.responseTo === parentCommentId) {
         return val += 1;

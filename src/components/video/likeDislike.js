@@ -67,7 +67,6 @@ export default function LikeDislike(props) {
 
   return (
     <div className="like-dislike">
-
       <div className="Like">
         {likeAction === 'liked'
           ? <LikeFilled onClick={onLike} />

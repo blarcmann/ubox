@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchComments, addComment } from '../../actions/video';
-import '../../styles/compontents/comments.scss'
 
 import Textarea from '../auth/textarea';
 import Submit from '../auth/submit';
@@ -53,9 +52,11 @@ export default function Comments(props) {
         ))}
       </div>
       <form>
-        <Textarea placeholder="Write some comments" rows="10" value={comment}
+        <h4>Write a comment</h4>
+        <Textarea placeholder="Write some comments" rows="4" value={comment}
           onChange={e => setComment(e.target.value)} />
         <Submit handleClick={onsubmit} label="submit" />
+        {/* <Submit handleClick={cancel} label="submit" /> */}
       </form>
     </div>
   )

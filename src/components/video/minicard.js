@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 import * as Config from '../../utils/config.json';
 import '../../styles/compontents/video/card.scss';
 
@@ -11,12 +12,17 @@ export default function Minicard(props) {
     <Link to={`/video/${video._id}`} className="minicard">
       <div className="thumbnail">
         <img src={`${Config.base}/${video.thumbnail}`} alt={video.title} className="thumbnail" />
+        <span className="duration">{minutes}:{seconds}</span>
       </div>
       <div className="meta">
         <h4>{video.title}</h4>
-        <span>{video.writer && video.writer.name ? video.writer.name : 'Anonymous black'}</span>
-        <span>{video.views} views</span>
-        <span>{minutes}:{seconds}</span>
+        <div className="others">
+          <span className="writer">{video.writer && video.writer.name ? video.writer.name : 'Anonymous black'}</span>
+          <div className="views">
+            <span>{video.views} views</span>
+            <span>{moment(video.createdAt).format('MMM Do YYYY')}</span>
+          </div>
+        </div>
       </div>
     </Link>
   )
