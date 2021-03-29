@@ -28,17 +28,18 @@ export default function Comment(props) {
     }
   }
 
-
   return (
     <>
       <div className="single-comment">
         <div className="avatar">
-          <img src={comment.writer.avatar} alt={comment.writer.name} />
+          {comment.writer && comment.writer.avatar
+            ? <img src={comment.writer.avatar} alt="avatar" className="avatar" />
+            : <img src={require('../../assets/images/misc/avatar.png').default} alt="avatar" className="avatar" />
+          }
         </div>
         <div className="content">
-          <h6>{comment.writer.name}</h6>
-          <p>{comment.content}</p>
-
+          <h6 className="name">{comment.writer.name}</h6>
+          <p className="comment">{comment.content}</p>
           {/* <LikeDislike comment commentId={comment._id} /> */}
           <div className="meta">
             {allowReplies && <button onClick={() => setShowingform(!showingform)} className="reply-to">Reply to</button>}
@@ -46,11 +47,13 @@ export default function Comment(props) {
         </div>
       </div>
       {allowReplies && showingform &&
-        <form onSubmit={onReply}>
+        <form onSubmit={onReply} className="reply-form">
           <Textarea placeholder="Reply comment" rows="4" value={reply}
             onChange={e => setReply(e.target.value)} />
-        <button type="button" onClick={onReply}>Reply</button>
-        <button type="button">Cancel</button>
+          <button type="button" className="comment-btn right plain" onClick={onReply}>Reply</button>
+          <button type="button" onClick={() => setShowingform(!showingform)} className="comment-btn right plain cancel">
+            Cancel
+          </button>
         </form>
       }
     </>

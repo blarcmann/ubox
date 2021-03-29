@@ -51,11 +51,11 @@ export default function Comments(props) {
           )
         ))}
       </div>
-      <form>
+      <form className="write-comment">
         <h4>Write a comment</h4>
         <Textarea placeholder="Write some comments" rows="4" value={comment}
           onChange={e => setComment(e.target.value)} />
-        <Submit handleClick={onsubmit} label="submit" />
+        <button handleClick={onsubmit} className="comment-btn right">Submit</button>
         {/* <Submit handleClick={cancel} label="submit" /> */}
       </form>
     </div>

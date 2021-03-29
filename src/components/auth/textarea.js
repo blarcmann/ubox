@@ -18,8 +18,8 @@ export default function InputField(props) {
         placeholder={placeholder}
         onChange={onChange}
         value={value}
-        rows={rows}
-      ></textarea>
+        rows={rows}>
+      </textarea>
 
     </div>
   );

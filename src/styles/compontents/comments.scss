@@ -1,6 +1,78 @@
+@import "../Variables.scss";
+
 .comments {
   margin-top: 5rem;
   .comment-reply {
     margin-left: 10%;
+  }
+  .single-comment {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 1.25rem 0;
+    .avatar {
+      margin-right: 0.5rem;
+      img {
+        width: 32px;
+        height: 32px;
+      }
+    }
+    .content {
+      .name {
+        font-size: 0.935rem;
+        font-weight: 500;
+        color: $dark;
+        margin-bottom: 0;
+        text-transform: capitalize;
+      }
+      .comment {
+        color: $gray;
+        font-size: $medium;
+        margin-bottom: 0;
+      }
+      .meta {
+        margin-top: 0.25rem;
+        button {
+          border: none;
+          background: none;
+          padding: 0;
+          color: $blue;
+          font-weight: 600;
+          font-size: 0.75rem;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .comment-btn {
+    background: none;
+    border: none;
+    background-color: $blue;
+    color: #FFF;
+    width: 100%;
+    height: 42px;
+    border-radius: 0.125rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    @media(min-width: 768px) {
+      width: 102px;
+    }
+    &.plain {
+      background: none;
+      color: $blue;
+    }
+    &.cancel {
+      color: $red;
+    }
+    &.right {
+      float: right;
+    }
+  }
+  .reply-form {
+    margin-bottom: 2.5rem;
+    margin-left: 2rem;
+    textarea {
+      margin-bottom: 0;
+    }
   }
 }
