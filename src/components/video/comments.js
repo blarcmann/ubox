@@ -46,7 +46,7 @@ export default function Comments(props) {
           (!comment.responseTo &&
             <div key={comment._id}>
               <Comment key={`main__${comment._id}`} comment={comment} postId={videoId} allowReplies />
-              <ReplyComment key={`reply${comment._id}`} comments={comments} postId={videoId} parentCommentId ={comment._id} />
+              <ReplyComment key={`reply${comment._id}`} comments={comments} postId={videoId} parentCommentId={comment._id} />
             </div>
           )
         ))}
@@ -55,8 +55,7 @@ export default function Comments(props) {
         <h4>Write a comment</h4>
         <Textarea placeholder="Write some comments" rows="4" value={comment}
           onChange={e => setComment(e.target.value)} />
-        <button handleClick={onsubmit} className="comment-btn right">Submit</button>
-        {/* <Submit handleClick={cancel} label="submit" /> */}
+        <button onClick={onsubmit} className="comment-btn right">Submit</button>
       </form>
     </div>
   )

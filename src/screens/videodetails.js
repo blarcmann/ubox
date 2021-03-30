@@ -52,6 +52,7 @@ export default function Videodetails(props) {
           <Comments videoId={video._id} />
         </div>
         <div className="recommended">
+          <h3 className="title">Recommended</h3>
           {videos.map((video, i) => <MiniCard key={i} video={video} />)}
         </div>
       </div>

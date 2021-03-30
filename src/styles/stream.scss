@@ -3,9 +3,11 @@
 .stream-container {
   width: 100%;
   min-height: 100vh;
-  display: flex;
   background-color: #f9f9f9;
-  padding: 2rem;
+  @media (min-width: 768px) {
+    display: flex;
+    padding: 2rem;
+  }
   .streaming {
     width: 100%;
     @media (min-width: 992px) {
@@ -27,6 +29,10 @@
     }
     .stream-meta {
       margin-top: 1.5rem;
+      padding: 1rem;
+      @media (min-width: 768px) {
+        padding: 0;
+      }
       .meta {
         @media (min-width: 768px) {
           display: flex;
@@ -38,14 +44,15 @@
           max-width: 80%;
         }
         .actions {
+          display: flex;
           justify-content: space-between;
-          @media (min-width: 768px) {
-            display: flex;
-          }
           .like-dislike {
             display: flex;
             align-items: center;
             margin-right: 1rem;
+            .Like {
+              margin-right: 0.75rem;
+            }
           }
         }
       }
@@ -72,8 +79,14 @@
   }
   .recommended {
     width: 100%;
+    margin-top: 2rem;
+    .title {
+      position: relative;
+      left: 0.5rem;
+    }
     @media (min-width: 992px) {
       width: 25%;
+      margin-top: 0;
     }
   }
 }
