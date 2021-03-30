@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
 import moment from 'moment';
 import * as Config from '../../utils/config.json';
 import '../../styles/compontents/video/card.scss';
@@ -9,7 +8,7 @@ export default function Minicard(props) {
   const minutes = Math.floor(video.duration / 60);
   const seconds = Math.floor(video.duration - (minutes * 60))
   return (
-    <Link to={`/video/${video._id}`} className="minicard">
+    <a href={`/video/${video._id}`} className="minicard">
       <div className="thumbnail">
         <img src={`${Config.base}/${video.thumbnail}`} alt={video.title} className="thumbnail" />
         <span className="duration">{minutes}:{seconds}</span>
@@ -24,6 +23,6 @@ export default function Minicard(props) {
           </div>
         </div>
       </div>
-    </Link>
+    </a>
   )
 }

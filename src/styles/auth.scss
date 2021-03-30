@@ -49,24 +49,20 @@
         color: rgb(255, 58, 58);
       }
     }
-    .check-terms {
-      color: $white;
-      display: flex;
-      justify-content: space-between;
-      margin: 1.25rem 0 0;
-      padding-left: 0.25rem;
-      width: 98%;
-      p,
-      a {
-        color: $white;
-        cursor: pointer;
-        text-decoration: underline;
-      }
-    }
     .copyright {
       font-size: 0.75rem;
       text-align: center;
       margin: 2rem 0 0;
+    }
+  }
+  .check-terms {
+    a {
+      color: $purpleViolet;
+      margin: 0.25rem 0 0;
+      padding-left: 0.25rem;
+      width: 98%;
+      cursor: pointer;
+      text-decoration: underline;
     }
   }
 }

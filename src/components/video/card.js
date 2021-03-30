@@ -17,8 +17,8 @@ export default function Card(props) {
         <span className="duration">{`${minutes}:${seconds}`}</span>
       </div>
       <div className="metadata">
-        {data.writer && data.writer.image
-          ? <img src={`${Config.base}/${data.writer.image}`} alt="avatar" className="avatar" />
+        {data.writer && data.writer.avatar
+          ? <img src={`${data.writer.avatar}`} alt="avatar" className="avatar" />
           : <img src={require('../../assets/images/misc/avatar.png').default} alt="avatar" className="avatar" />
         }
         <div className="meta">

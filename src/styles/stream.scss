@@ -54,6 +54,15 @@
               margin-right: 0.75rem;
             }
           }
+          .sub-btn {
+            background: none;
+            border: none;
+            background-color: $purpleViolet;
+            color: #fff;
+            height: 40px;
+            width: 120px;
+            border-radius: 0.25rem;
+          }
         }
       }
       .writer {

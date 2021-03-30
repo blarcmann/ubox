@@ -42,15 +42,14 @@ export default function Uploadvideo(props) {
       setPayload(payload => ({ ...payload, category: value }))
     }
   }
-  // Sis is basically clearing the hideous moral life.Quotes: Moral high ground was created by a bitch who couldn't take the smoke once they gave it. The rest of the video solidifies that :)
+
   const handleFile = (File) => {
-    if (File) {
+    if (File && File[0] && File[0].size <= 2e+8) {
+      console.log('file accepted', File)
       setFile(File[0]);
       const formData = new FormData();
       formData.append('file', File[0]);
       dispatch(createPath(formData))
-    } else {
-      alert('file not selected')
     }
   }
 
@@ -77,6 +76,14 @@ export default function Uploadvideo(props) {
     }
   }
 
+  const dropRejected = () => {
+    alert('File too large')
+    console.log('rejected')
+  }
+  const dropAccepted = () => {
+    console.log('accepted');
+  }
+
 
   return (
     <WithNav>
@@ -86,6 +93,8 @@ export default function Uploadvideo(props) {
           <Dropzone
             multiple={false} maxSize={2e+8}
             accept="video/*"
+            onDropRejected={dropRejected}
+            onDropAccepted={dropAccepted}
             onDrop={acceptedFile => handleFile(acceptedFile)}>
             {({ getRootProps, getInputProps }) => (
               <div className="upload-file" {...getRootProps()}>

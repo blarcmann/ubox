@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import * as Config from '../utils/config.json';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchVideoDetails, fetchAllVidoes } from '../actions/video';
@@ -11,7 +11,7 @@ import Comments from '../components/video/comments'
 import LikeDislike from '../components/video/likeDislike'
 import WithNav from '../hoc/withNav'
 
-export default function Videodetails(props) {
+export default function Stream(props) {
   const dispatch = useDispatch();
   const payload = {
     videoId: props.match.params.id

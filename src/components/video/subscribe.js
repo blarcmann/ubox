@@ -19,7 +19,7 @@ export default function Subscribe(props) {
   const subscribed = useSelector(state => state.video.subscribed)
 
   const handleSubscription = () => {
-    if (subscribed) { 
+    if (subscribed) {
       dispatch(unsubscribe(payload))
     } else {
       dispatch(subscribe(payload))
@@ -28,7 +28,7 @@ export default function Subscribe(props) {
 
   return (
     <div>
-      <button onClick={handleSubscription}>{subscribers}{subscribed ? 'Subscribers' : 'Subscribe'}</button>
+      <button className="sub-btn" onClick={handleSubscription}>{subscribers}&nbsp;{subscribed ? 'Subscribers' : 'Subscribed'}</button>
     </div>
   )
 }

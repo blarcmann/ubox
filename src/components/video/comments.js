@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchComments, addComment } from '../../actions/video';
 
 import Textarea from '../auth/textarea';
-import Submit from '../auth/submit';
+// import Submit from '../auth/submit';
 import Comment from './comment';
 import ReplyComment from './replycomment';
 

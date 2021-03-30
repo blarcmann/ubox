@@ -15,9 +15,9 @@ export default function Header(props) {
   return (
     <div className="header">
       <div className="mobile">
-        <div className="logo-main">
+        <Link to="/" className="logo-main">
           <img src={require('../../assets/images/logo/ubox.svg').default} alt="ubox" className="logo" />
-        </div>
+        </Link>
         <button className="toggle" onClick={() => setShow(!show)}>
           <img src={require('../../assets/images/misc/hamburger.svg').default} alt="menu" className="menu" />
         </button>
@@ -37,9 +37,9 @@ export default function Header(props) {
         }
       </div>
       <div className="desktop">
-        <div className="logo-main">
+        <Link to="/" className="logo-main">
           <img src={require('../../assets/images/logo/ubox.svg').default} alt="ubox" className="logo" />
-        </div>
+        </Link>
         {user &&
           <nav className="links">
             <Link to="/video/upload">
