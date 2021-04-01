@@ -1,22 +1,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 
-const userAuth = JSON.parse(localStorage.getItem('auth'));
+const user = JSON.parse(localStorage.getItem('auth'));
 
 export default function AuthHOC (SpecificComponent, option, adminRoute = null) {
   function AuthenticationCheck(props) {
 
-    // let user = useSelector(state => state.user);
-
     useEffect(() => {
-      if (!userAuth || !userAuth.token) {
+      if (!user) {
         if (option) {
           props.history.push('/login');
         }
         //Logged in Status 
       } else {
         //supposed to be Admin page, but not admin person wants to go inside
-        if (adminRoute && !userAuth.isAdmin) {
+        if (adminRoute && !user.isAdmin) {
           props.history.push('/')
         }
         //Logged in Status, but Try to go into log in page 
@@ -29,7 +27,7 @@ export default function AuthHOC (SpecificComponent, option, adminRoute = null) {
     })
 
     return (
-      <SpecificComponent {...props} user={userAuth} />
+      <SpecificComponent {...props} user={user} />
     )
   }
   return AuthenticationCheck

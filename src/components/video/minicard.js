@@ -1,6 +1,7 @@
 import React from 'react'
 import moment from 'moment';
 import * as Config from '../../utils/config.json';
+import utils from '../../utils'
 import '../../styles/compontents/video/card.scss';
 
 export default function Minicard(props) {
@@ -14,7 +15,7 @@ export default function Minicard(props) {
         <span className="duration">{minutes}:{seconds}</span>
       </div>
       <div className="meta">
-        <h4>{video.title}</h4>
+        <h4>{video && video.title && utils.textTruncate(video.title)}</h4>
         <div className="others">
           <span className="writer">{video.writer && video.writer.name ? video.writer.name : 'Anonymous black'}</span>
           <div className="views">

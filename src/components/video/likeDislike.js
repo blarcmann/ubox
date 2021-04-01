@@ -11,7 +11,7 @@ export default function LikeDislike(props) {
   const dispatch = useDispatch();
 
   let payload = {
-    userId: user && user.userId
+    userId: user && user._id
   }
 
   if (props.video) {
@@ -31,7 +31,7 @@ export default function LikeDislike(props) {
 
   // const checkLiked = () => {
   //   likes.map(like => {
-  //     if (like.userId === user.userId) {
+  //     if (like.userId === user.token) {
   //       setLikeAction('liked')
   //     }
   //   })
@@ -39,7 +39,7 @@ export default function LikeDislike(props) {
 
   // const checkDisliked = () => {
   //   likes.map(like => {
-  //     if (like.userId === user.userId) {
+  //     if (like.userId === user.token) {
   //       setDislikeAction('disliked')
   //     }
   //   })
@@ -70,7 +70,7 @@ export default function LikeDislike(props) {
       <div className="Like">
         {likeAction === 'liked'
           ? <LikeFilled onClick={onLike} />
-          : <LikeOutlined onClick={onLike} />
+          : <LikeFilled onClick={onLike} />
         }
         <span>{likes && likes.length > 0 ? likes.length : 0}</span>
       </div>
@@ -78,7 +78,7 @@ export default function LikeDislike(props) {
       <div className="Like">
         {dislikeAction === 'disliked'
           ? <DislikeFilled onClick={onDislike} />
-          : <DislikeOutlined onClick={onDislike} />
+          : <DislikeFilled onClick={onDislike} />
         }
         <span>{dislikes && dislikes.length > 0 ? dislikes.length : 0}</span>
       </div>

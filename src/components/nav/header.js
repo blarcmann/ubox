@@ -14,6 +14,8 @@ export default function Header(props) {
 
   return (
     <div className="header">
+
+
       <div className="mobile">
         <Link to="/" className="logo-main">
           <img src={require('../../assets/images/logo/ubox.svg').default} alt="ubox" className="logo" />
@@ -21,7 +23,7 @@ export default function Header(props) {
         <button className="toggle" onClick={() => setShow(!show)}>
           <img src={require('../../assets/images/misc/hamburger.svg').default} alt="menu" className="menu" />
         </button>
-        {show && user && user.userId &&
+        {show && user && user.token &&
           <nav className="mobile-links">
             <img src={require('../../assets/images/misc/close.svg').default} onClick={() => setShow(!show)} alt="close" className="close-menu" />
             <Link to="/video/upload">Upload</Link>
@@ -36,18 +38,27 @@ export default function Header(props) {
           </nav>
         }
       </div>
+
+
       <div className="desktop">
         <Link to="/" className="logo-main">
           <img src={require('../../assets/images/logo/ubox.svg').default} alt="ubox" className="logo" />
         </Link>
-        {user &&
-          <nav className="links">
-            <Link to="/video/upload">
-              <img src={require('../../assets/images/misc/upload.svg').default} alt="*" />
-            </Link>
-            <Link to="/subscriptions">Subscriptions</Link>
-            <button className="logout" onClick={logout}>Logout</button>
-          </nav>
+
+        {user && user.token &&
+          <div className="actions">
+            <div className="user">
+              <img src={require('../../assets/images/misc/user.svg').default} alt="ubox" className="logo" />
+              {user.username}
+            </div>
+            <div className="acts">
+              <Link to="/video/upload">
+                <img src={require('../../assets/images/misc/upload.svg').default} alt="*" />
+              </Link>
+              <Link to="/subscriptions">Subscriptions</Link>
+              <button className="logout" onClick={logout}>Logout</button>
+            </div>
+          </div>
         }
         {!user &&
           <nav className="links">

@@ -7,10 +7,10 @@ export default function Subscribe(props) {
   const dispatch = useDispatch();
   const { userTo } = props;
   const user = JSON.parse(localStorage.getItem('auth'))
-  const payload = { userTo: userTo, userFrom: user && user.userId };
+  const payload = { userTo: userTo, userFrom: user && user._id };
 
   useEffect(() => {
-    if (user && user.userId) {
+    if (user && user.token) {
       dispatch(getSubscribers(payload))
     }
   })

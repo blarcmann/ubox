@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {Loading} from './ui';
+import { Loading } from './ui';
 import * as types from '../constants/types';
 import * as Config from '../utils/config.json';
 
@@ -10,7 +10,6 @@ export const register = (payload, props) => (dispatch) => {
   axios
     .post(`${Config.base_url}/users/register`, payload)
     .then((response) => {
-      console.log('res register', response)
       const { data } = response;
       dispatch({ type: types.REGISTER, payload: data });
       dispatch(Loading(false));
@@ -30,7 +29,7 @@ export const login = (payload, props) => (dispatch) => {
     .then((response) => {
       console.log('res login', response)
       const { data } = response;
-      localStorage.setItem('auth', JSON.stringify(data))
+      localStorage.setItem('auth', JSON.stringify(data.user))
       dispatch({ type: types.LOGIN, payload: data });
       dispatch(Loading(false));
       window.location.reload()
@@ -52,13 +51,3 @@ export function auth() {
     payload: request
   }
 }
-
-// export function logoutUser() {
-//   const request = axios.get(`${Config.base_url}/logout`)
-//     .then(response => response.data);
-
-//   return {
-//     type: LOGOUT,
-//     payload: request
-//   }
-// }

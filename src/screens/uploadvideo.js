@@ -54,14 +54,14 @@ export default function Uploadvideo(props) {
   }
 
   const onSubmit = () => {
-    if (user && user.userId) {
+    if (user && user.token) {
       const { title, description, privacy, category } = payload;
       const { thumbnailsPath, duration } = generatedThumbnail;
       if (!title || !description || !category || privacy === '' || !thumbnailsPath || !duration || !videopath.filePath) {
         return alert('Please fill all the fields')
       }
       const data = {
-        writer: user.userId,
+        writer: user._id,
         title: title,
         description: description,
         privacy: privacy,

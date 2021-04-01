@@ -1,0 +1,10 @@
+POST http://localhost:5000/api/video/viewCount
+content-type: application/json
+
+{
+    "videoId": "60632009a171e6fbd13153fa"
+}
+
+###
+
+GET http://localhost:5000/api/video/all

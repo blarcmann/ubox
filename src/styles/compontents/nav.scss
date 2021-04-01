@@ -36,6 +36,38 @@
       transform: scaleX(1);
     }
   }
+  .actions {
+    &:hover {
+      .acts {
+        display: block;
+      }
+    }
+    .user {
+      border: 1px solid $lightgray;
+      border-radius: 1rem;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: $gray;
+      cursor: pointer;
+      transition: 0.5s;
+      &:hover {
+        border: 1px solid $graylite;
+      }
+      img {
+        margin-right: 0.5rem;
+        width: 14px;
+      }
+    }
+    .acts {
+      display: none;
+      position: absolute;
+      right: 1.5rem;
+      background-color: #fff;
+      padding: 2rem 1.5rem;
+      z-index: 9;
+    }
+  }
   .mobile {
     width: 100%;
     display: flex;
@@ -54,9 +86,8 @@
       left: 0;
       width: 100%;
       z-index: 9;
-      box-shadow: 0 2px 4px $graylite;
+      box-shadow: 0 1px 4px $lightgray;
       padding: 1rem 0;
-      transition: 2s;
       .close-menu {
         margin-left: auto;
         display: block;

@@ -24,10 +24,10 @@ export default function Comments(props) {
   const comments = useSelector(store => store.video.comments);
 
   const onsubmit = () => {
-    if (user && user.userId) {
+    if (user && user.token) {
       const payload = {
         content: comment,
-        writer: user.userId,
+        writer: user._id,
         postId: videoId,
       }
       dispatch(addComment(payload))
@@ -53,7 +53,7 @@ export default function Comments(props) {
       </div>
       <form className="write-comment">
         <h4>Write a comment</h4>
-        <Textarea placeholder="Write some comments" rows="4" value={comment}
+        <Textarea placeholder="Write some comments" rows="2" value={comment}
           onChange={e => setComment(e.target.value)} />
         <button onClick={onsubmit} className="comment-btn right">Submit</button>
       </form>

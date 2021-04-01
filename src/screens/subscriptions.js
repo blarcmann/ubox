@@ -12,11 +12,11 @@ export default function Subscriptions() {
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem('auth'));
   const payload = {
-    userFrom: user && user.userId
+    userFrom: user && user._id
   }
 
   useEffect(() => {
-    if (user && user.userId) {
+    if (user && user.token) {
       dispatch(getSubscriptionVideos(payload))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

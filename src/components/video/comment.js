@@ -13,9 +13,9 @@ export default function Comment(props) {
   const user = JSON.parse(localStorage.getItem('auth'));
 
   const onReply = () => {
-    if (user && user.userId) {
+    if (user && user.token) {
       const payload = {
-        writer: user.userId,
+        writer: user._id,
         postId: props.postId,
         responseTo: comment._id,
         content: reply,
@@ -48,7 +48,7 @@ export default function Comment(props) {
       </div>
       {allowReplies && showingform &&
         <form onSubmit={onReply} className="reply-form">
-          <Textarea placeholder="Reply comment" rows="4" value={reply}
+          <Textarea placeholder="Reply comment" rows="1" value={reply}
             onChange={e => setReply(e.target.value)} />
           <button type="button" className="comment-btn right plain" onClick={onReply}>Reply</button>
           <button type="button" onClick={() => setShowingform(!showingform)} className="comment-btn right plain cancel">

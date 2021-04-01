@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
+import moment from 'moment'
 import * as Config from '../utils/config.json';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchVideoDetails, fetchAllVidoes } from '../actions/video';
+import { fetchVideoDetails, fetchAllVidoes, updateViewsCount } from '../actions/video';
 import '../styles/stream.scss';
 
 // components
@@ -17,6 +18,7 @@ export default function Stream(props) {
     videoId: props.match.params.id
   }
   useEffect(() => {
+    dispatch(updateViewsCount(payload))
     dispatch(fetchVideoDetails(payload))
     dispatch(fetchAllVidoes());
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -34,18 +36,26 @@ export default function Stream(props) {
           </div>
           <div className="stream-meta">
             <div className="meta">
-              <h1 className="title">{video.title}</h1>
+              <div className="stream-tile">
+                <h1 className="title">{video.title}</h1>
+                <div className="views-date">
+                  <span>{`${video.views} views`}</span>
+                  <span>{moment(video.createdAt).format('MMM Do YYYY')}</span>
+                </div>
+              </div>
               <div className="actions">
                 <LikeDislike video videoId={video._id} />
-                <Subscribe userTo={video.writer && video.writer._id} />
               </div>
             </div>
             <div className="writer">
-              {video.writer && video.writer.avatar
-                ? <img src={video.writer.avatar} alt="avatar" className="avatar" />
-                : <img src={require('../assets/images/misc/avatar.png').default} alt="avatar" className="avatar" />
-              }
-              <span>{video.writer && video.writer.name}</span>
+              <div className="creator">
+                {video.writer && video.writer.avatar
+                  ? <img src={video.writer.avatar} alt="avatar" className="avatar" />
+                  : <img src={require('../assets/images/misc/avatar.png').default} alt="avatar" className="avatar" />
+                }
+                <span>{video.writer && video.writer.username}</span>
+              </div>
+              <Subscribe userTo={video.writer && video.writer._id} />
             </div>
             <p className="description">{video.description}.</p>
           </div>

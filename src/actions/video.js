@@ -121,6 +121,15 @@ export const fetchVideoDetails = (payload) => (dispatch) => {
     })
 }
 
+export const updateViewsCount = (payload) => () => {
+  axios
+    .post(`${Config.base_url}/video/viewCount`, payload)
+    .then()
+    .catch((error) => {
+      console.log("failed to update count", error)
+    })
+}
+
 export const getSubscribers = (payload) => (dispatch) => {
   dispatch(Loading(true));
 
