@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { like, dislike, fetchVideoDetails } from '../../actions/video'
+import { useDispatch, useSelector } from 'react-redux'
+import { like, dislike } from '../../actions/video'
 import { DislikeFilled, LikeFilled } from '@ant-design/icons';
 
 export default function LikeDislike(props) {
   const { videoId, video } = props;
-  const [liked, setLiked] = useState();
-  const [disliked, setDisliked] = useState(false);
   const user = JSON.parse(localStorage.getItem('auth'));
   const dispatch = useDispatch();
 
@@ -17,11 +15,8 @@ export default function LikeDislike(props) {
 
   const likes = video.likes;
   const dislikes = video.dislikes;
-
-  // useEffect(() => {
-  //   checkLiked(user._id)
-  //   checkDisliked(user._id)
-  // }, [likes, dislikes])
+  const liked = useSelector(state => state.video.liked);
+  const disliked = useSelector(state => state.video.disliked);
 
   const onLike = () => {
     dispatch(like(payload));
@@ -31,25 +26,17 @@ export default function LikeDislike(props) {
     dispatch(dislike(payload))
   }
 
-  const checkLiked = (userId) => {
-    const cl = likes.filter(like => like.toString() === userId.toString());
-    if (cl) setLiked('green')
-  }
-
-  const checkDisliked = (userId) => {
-    const dl = likes.filter(like => like.toString() === userId.toString());
-    setDisliked(dl)
-  }
+  console.log(liked, disliked)
 
   return (
     <div className="like-dislike">
       <div className="Like">
-        <LikeFilled onClick={onLike} color={liked} />
+        <LikeFilled onClick={onLike} className={liked ? 'liked' : null} />
         <span>{likes && likes.length > 0 ? likes.length : 0}</span>
       </div>
 
       <div className="Like">
-        <DislikeFilled onClick={onDislike} />
+        <DislikeFilled onClick={onDislike} className={disliked ? 'dislike' : null} />
         <span>{dislikes && dislikes.length > 0 ? dislikes.length : 0}</span>
       </div>
 

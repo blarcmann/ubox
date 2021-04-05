@@ -2,6 +2,7 @@ import axios from 'axios';
 import { Loading } from './ui';
 import * as Types from '../constants/types';
 import * as Config from '../utils/config.json';
+const user = JSON.parse(localStorage.getItem('auth'));
 
 
 
@@ -108,6 +109,8 @@ export const fetchVideoDetails = (payload) => (dispatch) => {
       const { video } = response.data;
       if (response.data.success) {
         dispatch({ type: Types.FETCH_VIDEO_DETAILS, payload: video });
+        dispatch(checkLiked(video.likes));
+        dispatch(checkDisliked(video.dislikes));
         dispatch(Loading(false));
       } else {
         dispatch(Loading(false));
@@ -290,7 +293,6 @@ export const fetchComments = (payload) => (dispatch) => {
 
 export const like = (payload) => (dispatch) => {
   dispatch(Loading(true));
-
   axios
     .post(`${Config.base_url}/video/like`, payload)
     .then((response) => {
@@ -326,4 +328,16 @@ export const dislike = (payload) => (dispatch) => {
       alert('Please reload page')
       console.log("failed to dislike", error)
     })
+}
+
+export const checkLiked = (likes) => (dispatch) => {
+  const userId = user._id;
+  const cl = likes.filter(like => like.toString() === userId.toString());
+  dispatch({ type: Types.LIKED, payload: cl && cl.length > 0 ? true : false })
+}
+
+export const checkDisliked = (dislikes) => (dispatch) => {
+  const userId = user._id;
+  const dl = dislikes.filter(dislike => dislike.toString() === userId.toString());
+  dispatch({ type: Types.DISLIKED, payload: dl && dl.length > 0 ? true : false })
 }

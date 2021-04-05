@@ -9,8 +9,8 @@ let initialState = {
   subscribed: false,
   subVideos: [],
   comments: [],
-  likes: [],
-  dislikes: [],
+  liked: false,
+  disliked: false,
 }
 
 
@@ -68,15 +68,15 @@ export default function videoReducer(state = initialState, action) {
         ...state,
         comments: action.payload
       }
-    case Types.GET_LIKES:
+    case Types.LIKED:
       return {
         ...state,
-        likes: action.payload
+        liked: action.payload
       }
-    case Types.GET_DISLIKES:
+    case Types.DISLIKED:
       return {
         ...state,
-        dislikes: action.payload
+        disliked: action.payload
       }
     default:
       return state;
