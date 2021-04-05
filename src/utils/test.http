@@ -1,10 +1,7 @@
-POST http://localhost:5000/api/video/viewCount
+POST http://localhost:5000/api/video/like
 content-type: application/json
 
 {
-    "videoId": "60632009a171e6fbd13153fa"
+    "videoId": "60632009a171e6fbd13153fa",
+    "userId": "6063239ba171e6fbd13153fd"
 }
-
-###
-
-GET http://localhost:5000/api/video/all

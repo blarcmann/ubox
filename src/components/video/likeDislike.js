@@ -1,85 +1,55 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { getLikes, getDislikes, upLike, downLike, initDislike, upDislike } from '../../actions/video'
-import { DislikeOutlined, LikeOutlined, DislikeFilled, LikeFilled } from '@ant-design/icons';
+import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { like, dislike, fetchVideoDetails } from '../../actions/video'
+import { DislikeFilled, LikeFilled } from '@ant-design/icons';
 
 export default function LikeDislike(props) {
-  const { videoId, commentId } = props;
-  const [likeAction, setLikeAction] = useState('');
-  const [dislikeAction, setDislikeAction] = useState('');
+  const { videoId, video } = props;
+  const [liked, setLiked] = useState();
+  const [disliked, setDisliked] = useState(false);
   const user = JSON.parse(localStorage.getItem('auth'));
   const dispatch = useDispatch();
 
-  let payload = {
-    userId: user && user._id
+  const payload = {
+    userId: user && user._id,
+    videoId: videoId
   }
 
-  if (props.video) {
-    payload = { ...payload, videoId: videoId }
-  } else {
-    payload = { ...payload, commentId: commentId }
-  }
+  const likes = video.likes;
+  const dislikes = video.dislikes;
 
-  useEffect(() => {
-    dispatch(getLikes(payload))
-    dispatch(getDislikes(payload))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  const likes = useSelector(store => store.video.likes)
-  const dislikes = useSelector(store => store.video.dislikes)
-
-  // const checkLiked = () => {
-  //   likes.map(like => {
-  //     if (like.userId === user.token) {
-  //       setLikeAction('liked')
-  //     }
-  //   })
-  // }
-
-  // const checkDisliked = () => {
-  //   likes.map(like => {
-  //     if (like.userId === user.token) {
-  //       setDislikeAction('disliked')
-  //     }
-  //   })
-  // }
+  // useEffect(() => {
+  //   checkLiked(user._id)
+  //   checkDisliked(user._id)
+  // }, [likes, dislikes])
 
   const onLike = () => {
-    if (likeAction === null) {
-      dispatch(upLike(payload));
-      setLikeAction('liked')
-      setDislikeAction('')
-    } else {
-      dispatch(downLike(payload));
-    }
+    dispatch(like(payload));
   }
 
   const onDislike = () => {
-    if (dislikeAction === null) { 
-      dispatch(initDislike(payload))
-      setDislikeAction('disliked')
-      setLikeAction('')
-    } else {
-      dispatch(upDislike(payload))
-    }
+    dispatch(dislike(payload))
+  }
+
+  const checkLiked = (userId) => {
+    const cl = likes.filter(like => like.toString() === userId.toString());
+    if (cl) setLiked('green')
+  }
+
+  const checkDisliked = (userId) => {
+    const dl = likes.filter(like => like.toString() === userId.toString());
+    setDisliked(dl)
   }
 
   return (
     <div className="like-dislike">
       <div className="Like">
-        {likeAction === 'liked'
-          ? <LikeFilled onClick={onLike} />
-          : <LikeFilled onClick={onLike} />
-        }
+        <LikeFilled onClick={onLike} color={liked} />
         <span>{likes && likes.length > 0 ? likes.length : 0}</span>
       </div>
 
       <div className="Like">
-        {dislikeAction === 'disliked'
-          ? <DislikeFilled onClick={onDislike} />
-          : <DislikeFilled onClick={onDislike} />
-        }
+        <DislikeFilled onClick={onDislike} />
         <span>{dislikes && dislikes.length > 0 ? dislikes.length : 0}</span>
       </div>
 

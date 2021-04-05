@@ -288,19 +288,17 @@ export const fetchComments = (payload) => (dispatch) => {
 
 // LIKES && DISLIKES
 
-export const getLikes = (payload) => (dispatch) => {
+export const like = (payload) => (dispatch) => {
   dispatch(Loading(true));
 
   axios
-    .post(`${Config.base_url}/like/getLikes`, payload)
+    .post(`${Config.base_url}/video/like`, payload)
     .then((response) => {
-      const { likes } = response.data;
       if (response.data.success) {
-        dispatch({ type: Types.GET_LIKES, payload: likes });
         dispatch(Loading(false));
       } else {
         dispatch(Loading(false));
-        alert('failed to load all likes')
+        alert('failed to like')
       }
     })
     .catch((error) => {
@@ -310,112 +308,22 @@ export const getLikes = (payload) => (dispatch) => {
     })
 }
 
-export const getDislikes = (payload) => (dispatch) => {
+export const dislike = (payload) => (dispatch) => {
   dispatch(Loading(true));
 
   axios
-    .post(`${Config.base_url}/like/getDislikes`, payload)
+    .post(`${Config.base_url}/video/dislike`, payload)
     .then((response) => {
-      const { dislikes } = response.data;
       if (response.data.success) {
-        dispatch({ type: Types.GET_DISLIKES, payload: dislikes });
         dispatch(Loading(false));
       } else {
         dispatch(Loading(false));
-        alert('failed to load all likes')
+        alert('failed to dislike')
       }
     })
     .catch((error) => {
       dispatch(Loading(false));
       alert('Please reload page')
-      console.log("failed to load all likes", error)
-    })
-}
-
-export const upLike = (payload) => (dispatch) => {
-  dispatch(Loading(true));
-
-  axios
-    .post(`${Config.base_url}/like/uplike`, payload)
-    .then((response) => {
-      if (response.data.success) {
-        dispatch(getDislikes(payload))
-        dispatch(getLikes(payload))
-        dispatch(Loading(false));
-      } else {
-        dispatch(Loading(false));
-        alert('failed to uplike')
-      }
-    })
-    .catch((error) => {
-      dispatch(Loading(false));
-      alert('Please reload page')
-      console.log("failed to uplike", error)
-    })
-}
-
-export const downLike = (payload) => (dispatch) => {
-  dispatch(Loading(true));
-
-  axios
-    .post(`${Config.base_url}/like/downlike`, payload)
-    .then((response) => {
-      if (response.data.success) {
-        dispatch(getDislikes(payload))
-        dispatch(getLikes(payload))
-        dispatch(Loading(false));
-      } else {
-        dispatch(Loading(false));
-        alert('failed to uplike')
-      }
-    })
-    .catch((error) => {
-      dispatch(Loading(false));
-      alert('Please reload page')
-      console.log("failed to uplike", error)
-    })
-}
-
-export const initDislike = (payload) => (dispatch) => {
-  dispatch(Loading(true));
-
-  axios
-    .post(`${Config.base_url}/like/initDislike`, payload)
-    .then((response) => {
-      if (response.data.success) {
-        dispatch(getDislikes(payload))
-        dispatch(getLikes(payload))
-        dispatch(Loading(false));
-      } else {
-        dispatch(Loading(false));
-        alert('failed to uplike')
-      }
-    })
-    .catch((error) => {
-      dispatch(Loading(false));
-      alert('Please reload page')
-      console.log("failed to uplike", error)
-    })
-}
-
-export const upDislike = (payload) => (dispatch) => {
-  dispatch(Loading(true));
-
-  axios
-    .post(`${Config.base_url}/like/upDislike`, payload)
-    .then((response) => {
-      if (response.data.success) {
-        dispatch(getDislikes(payload))
-        dispatch(getLikes(payload))
-        dispatch(Loading(false));
-      } else {
-        dispatch(Loading(false));
-        alert('failed to uplike')
-      }
-    })
-    .catch((error) => {
-      dispatch(Loading(false));
-      alert('Please reload page')
-      console.log("failed to uplike", error)
+      console.log("failed to dislike", error)
     })
 }

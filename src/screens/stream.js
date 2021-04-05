@@ -25,7 +25,7 @@ export default function Stream(props) {
   }, []);
 
   const video = useSelector(state => state.video.videoDetails);
-  const videos = useSelector(state => state.video.all)
+  const videos = useSelector(state => state.video.all);
 
   return (
     <WithNav>
@@ -39,17 +39,17 @@ export default function Stream(props) {
               <div className="stream-tile">
                 <h1 className="title">{video.title}</h1>
                 <div className="views-date">
-                  <span>{`${video.views} views`}</span>
-                  <span>{moment(video.createdAt).format('MMM Do YYYY')}</span>
+                  <span>{`${video && video.views} views`}</span>
+                  <span>{moment(video && video.createdAt).format('MMM Do YYYY')}</span>
                 </div>
               </div>
               <div className="actions">
-                <LikeDislike video videoId={video._id} />
+                <LikeDislike video={video} videoId={video._id} />
               </div>
             </div>
             <div className="writer">
               <div className="creator">
-                {video.writer && video.writer.avatar
+                {video && video.writer && video.writer.avatar
                   ? <img src={video.writer.avatar} alt="avatar" className="avatar" />
                   : <img src={require('../assets/images/misc/avatar.png').default} alt="avatar" className="avatar" />
                 }
