@@ -101,12 +101,15 @@
   margin-bottom: 2rem;
   position: relative;
   .thumbnail {
-    height: 124px;
+    height: 132px;
     width: 45%;
     max-width: 200px;
     margin-right: 1rem;
     position: relative;
     border-radius: 0.125rem;
+    @media (min-width: 1200px) {
+      height: 108px;
+    }
     &::before {
       content: "";
       width: 100%;
@@ -136,8 +139,6 @@
   .meta {
     width: 55%;
     .others {
-      position: absolute;
-      bottom: 0.25rem;
       font-weight: 500;
       span {
         display: inline-block;
@@ -145,15 +146,18 @@
         font-size: 0.75rem;
         margin-right: 0.875rem;
         &.writer {
-          font-size: 0.875rem;
-          color: $dark;
+          font-size: 0.75rem;
+          color: $gray;
         }
       }
       .views {
         display: flex;
-        justify-content: space-between;
         flex-wrap: wrap;
       }
+    }
+    h4 {
+      font-size: 0.8rem;
+      margin-bottom: 0;
     }
   }
 }

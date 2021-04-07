@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import * as Config from '../../utils/config.json';
+import utils from '../../utils'
 import '../../styles/compontents/video/card.scss';
 
 
@@ -22,9 +23,9 @@ export default function Card(props) {
           : <img src={require('../../assets/images/misc/avatar.png').default} alt="avatar" className="avatar" />
         }
         <div className="meta">
-          <h3 className="title">{data.title}</h3>
+          <h3 className="title">{utils.shortTruncate(data.title)}</h3>
           <div className="views-date">
-            <span className="creator">{data.writer && data.writer.name ? data.writer.name : 'Anonymous black'}</span>
+            <span className="creator">{data.writer && data.writer.username ? data.writer.username : 'Anonymous'}</span>
             <span>{`${data.views} views`}</span>
             <span>{moment(data.createdAt).format('MMM Do YYYY')}</span>
           </div>
