@@ -4,6 +4,7 @@
   width: 100%;
   min-height: 100vh;
   background-color: #f9f9f9;
+  font-family: "Noto Sans JP", sans-serif;
   @media (min-width: 992px) {
     display: flex;
     padding: 2rem;
@@ -11,6 +12,10 @@
   .streaming {
     width: 100%;
     @media (min-width: 992px) {
+      width: 70%;
+      margin-right: 1.5rem;
+    }
+    @media (min-width: 1200px) {
       width: 75%;
       margin-right: 1.5rem;
     }
@@ -79,18 +84,28 @@
             @media (min-width: 768px) {
               margin-top: 0;
             }
-            .Like {
-              margin-right: 0.75rem;
-              color: #a7a7a7;
+            .dl {
+              margin-right: 1.25rem;
+              color: $graylite;
+              span.number {
+                font-weight: 500;
+                margin-left: 0.25rem;
+                font-size: 0.75rem;
+                position: relative;
+                bottom: 2px;
+              }
               svg {
-                font-size: 20px;
-                color: #a7a7a7;
+                color: $graylite;
               }
-              .liked svg{
-                color: blueviolet;
-              }
-              .dislike svg{
-                color: red;
+              &.liked,
+              &.disliked {
+                span.number {
+                  color: $purpleViolet;
+                }
+                svg {
+                  font-size: 20px;
+                  color: $purpleViolet;
+                }
               }
             }
           }
@@ -136,14 +151,19 @@
     margin-top: 2rem;
     padding: 0.5rem;
     @media (min-width: 992px) {
-      width: 25%;
+      width: 30%;
       margin-top: 0;
       padding: 0;
+    }
+    @media (min-width: 1200px) {
+      width: 25%;
     }
     .title {
       position: relative;
       left: 0.5rem;
       margin-bottom: 1rem;
+      color: $dark;
+      font-weight: 500;
     }
   }
 }
